@@ -4,6 +4,8 @@ import { Route, Router } from '@angular/router';
 import { faLock } from '@fortawesome/free-solid-svg-icons';
 import { AuthService } from 'src/app/services/auth.service';
 
+import { ToastrService } from 'ngx-toastr';
+
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -17,7 +19,7 @@ export class LoginComponent implements OnInit{
     password: new FormControl('')
   });
 
-  constructor(private auth: AuthService, private router: Router) { }
+  constructor(private auth: AuthService, private router: Router, private toastr: ToastrService) { }
 
   ngOnInit(): void {
     if (this.auth.isLoggedIn()) {
@@ -30,8 +32,10 @@ export class LoginComponent implements OnInit{
       this.auth.login(this.loginForm.value).subscribe(
         (result) => {
           this.router.navigate(['admin']);
+          this.toastr.success("login done successfully", "Success")
         },
         (err: Error) => {
+          this.toastr.error(err.message, 'Error');
           console.log(err);
         }
       );

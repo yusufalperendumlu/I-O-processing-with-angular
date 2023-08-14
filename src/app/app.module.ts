@@ -10,12 +10,16 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { FormsModule ,ReactiveFormsModule } from '@angular/forms';
 
+import { ToastrModule, provideToastr } from "ngx-toastr";
+import { BrowserAnimationsModule, provideAnimations } from '@angular/platform-browser/animations';
+
+
 @NgModule({
   declarations: [
     AppComponent,
     ForgotPasswordComponent,
     LoginComponent,
-    NotFoundComponent
+    NotFoundComponent,
   ],
   imports: [
     BrowserModule,
@@ -23,9 +27,27 @@ import { FormsModule ,ReactiveFormsModule } from '@angular/forms';
     NgbModule,
     FontAwesomeModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    ToastrModule.forRoot({
+      timeOut: 2500,
+      positionClass: 'toast-top-right',
+      preventDuplicates: false,  
+      closeButton : true,
+      progressBar : true,
+      autoDismiss : true,
+      maxOpened : 1,
+      newestOnTop : true,
+      enableHtml : true,
+      easing : 'ease-in',
+      easeTime : 300,
+      extendedTimeOut : 1000,
+      tapToDismiss : true,
+    }),
+    BrowserAnimationsModule
   ],
-  providers: [],
+  providers: [
+    
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
