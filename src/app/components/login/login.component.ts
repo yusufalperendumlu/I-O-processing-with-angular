@@ -32,7 +32,7 @@ export class LoginComponent implements OnInit{
       this.auth.login(this.loginForm.value).subscribe(
         (result) => {
           this.router.navigate(['admin']);
-          this.toastr.success("login done successfully", "Success")
+          this.toastr.success("Login done successfully", "Success")
         },
         (err: Error) => {
           this.toastr.error(err.message, 'Error');
