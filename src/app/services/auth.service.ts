@@ -32,6 +32,13 @@ export class AuthService {
       return of({name: 'Alperen Dumlu', email: 'admin@gmail.com'})
     }
 
+    //state at -> okunacak
+
     return throwError(new Error('Failed to login'));
   }
-}
+
+  getUser() {
+    return {name: 'Alperen Dumlu', email: 'admin@gmail.<EMAIL>'};
+    } 
+  }
+

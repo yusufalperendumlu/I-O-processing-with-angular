@@ -18,7 +18,13 @@
                 <a class="nav-item nav-link" routerLink="./services" routerLinkActive="avtive">Services</a>
                 <a class="nav-item nav-link" routerLink="./contact" routerLinkActive="avtive">Contact</a>
             </div>
+
+            <span class="nav-item">
+
+            </span>
+
             <div class="d-flex align-items-lg-center mt-3 mt-lg-0">
+                <p class="text-white text-center d-flex justify-content-center mt-3 p-2">{{ userName }}</p>
                 <a routerLink="/login" class="btn btn-sm btn-primary w-full w-lg-auto" (click)="logout()">
                     Logout
                 </a>
