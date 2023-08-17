@@ -2,43 +2,57 @@ import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { Observable, of, throwError } from 'rxjs';
 
+export interface IUser {
+  name: string;
+  email: string;
+}
+
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
 
-  constructor(private router: Router) { }
+  private user: IUser | null = null;
 
-  setToken(token: string) {
-    localStorage.setItem('token', token);
+  constructor() {
+    this.loadUserFromStorage();
+   }
+
+   private loadUserFromStorage() {
+    const token = localStorage.getItem('token');
+    if (token) {
+      this.user = {name: 'Alperen Dumlu', email: 'admin@gmail.com'}
+   }
   }
 
-  getToken(): string | null {
-    return localStorage.getItem('token');
+  setUser(user: IUser | null): void {
+    this.user = user;
+    if (user) {
+      localStorage.setItem('token', 'abcdefghijklmnopqrstuvwxyz');
+    } else {
+      localStorage.removeItem('token');
+    }
+  }
+
+  getUser(): IUser | null {
+    return this.user;
   }
 
   isLoggedIn(): boolean {
-    return this.getToken() !== null;
+    return !!this.user;
+  }
+
+  login({email, password}: any): Observable<IUser> {
+    if (email === 'admin@gmail.com' && password === 'admin123') {
+      const user: IUser = { name: 'Alperen Dumlu', email: 'admin@gmail.com' };
+      this.setUser(user);
+      return of(user);
+    }
+    return throwError('Failed to login');
   }
 
   logout(): void {
-    localStorage.removeItem('token');
-    this.router.navigate(['login']);
+    this.setUser(null);
   }
-
-  login({ email,password }: any): Observable<any> {
-    if (email === 'admin@gmail.com' && password === 'admin123') {
-      this.setToken('abcdefghijklmnopqrstuvwxyz');
-      return of({name: 'Alperen Dumlu', email: 'admin@gmail.com'})
-    }
-
-    //state at -> okunacak
-
-    return throwError(new Error('Failed to login'));
-  }
-
-  getUser() {
-    return {name: 'Alperen Dumlu', email: 'admin@gmail.<EMAIL>'};
-    } 
   }
 
