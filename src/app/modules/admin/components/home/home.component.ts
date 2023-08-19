@@ -1,6 +1,8 @@
 import { AfterViewInit, Component, OnInit } from '@angular/core';
-import { AsyncSubject, BehaviorSubject, Observable, ReplaySubject, asyncScheduler } from 'rxjs';
+import { AsyncSubject, BehaviorSubject, Observable, ReplaySubject, asyncScheduler, bindCallback } from 'rxjs';
 import { ajax } from 'rxjs/ajax'
+
+declare var $: any;
 
 @Component({
   selector: 'app-home',
@@ -16,15 +18,21 @@ export class HomeComponent implements OnInit, AfterViewInit{
 
       ngAfterViewInit(): void {
         asyncScheduler.schedule(() => {
-          this.name = 'Ahsen';  
+          this.name = 'Alperen';  
         })
       }
 
     ngOnInit(): void {
-       ajax.getJSON("https://jsonplaceholder.typicode.com/posts").subscribe(  //endpointlere istek göndermek için -> httpClient 
-        data => { console.log(data) }
-       )
+      // $.getJSON("https://jsonplaceholder.typicode.com/posts", (data: any) => {
+      //   console.log(data);
+        
+      // })       
       
+      const obs: (url: string) => Observable<any[]> = bindCallback($.getJSON);
+
+      obs("https://jsonplaceholder.typicode.com/posts").subscribe(data => { console.log(data) })
+
+
     }
 
 }
