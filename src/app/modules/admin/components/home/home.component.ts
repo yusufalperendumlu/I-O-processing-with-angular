@@ -1,5 +1,5 @@
 import { AfterViewInit, Component, OnInit } from '@angular/core';
-import { AsyncSubject, BehaviorSubject, Observable, ReplaySubject, asyncScheduler, bindCallback } from 'rxjs';
+import { AsyncSubject, BehaviorSubject, Observable, ReplaySubject, asyncScheduler, bindCallback, defer, of, timer } from 'rxjs';
 import { ajax } from 'rxjs/ajax'
 
 declare var $: any;
@@ -23,15 +23,14 @@ export class HomeComponent implements OnInit, AfterViewInit{
       }
 
     ngOnInit(): void {
-      // $.getJSON("https://jsonplaceholder.typicode.com/posts", (data: any) => {
-      //   console.log(data);
-        
-      // })       
-      
-      const obs: (url: string) => Observable<any[]> = bindCallback($.getJSON);
+     const obs1 = of(new Date());
 
-      obs("https://jsonplaceholder.typicode.com/posts").subscribe(data => { console.log(data) })
+     const obs2 = defer(() => of(new Date())) //subscribe olunulduğunda çalışır
 
+     timer(5000).subscribe(() => {
+      obs1.subscribe((data) => console.log(data))
+      obs2.subscribe((data) => console.log(data))
+     })
 
     }
 
