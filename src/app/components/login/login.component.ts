@@ -1,10 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { Route, Router } from '@angular/router';
-import { faLock } from '@fortawesome/free-solid-svg-icons';
+import { faLock, faEye } from '@fortawesome/free-solid-svg-icons';
 import { AuthService } from 'src/app/services/auth.service';
 
 import { ToastrService } from 'ngx-toastr';
+
 
 @Component({
   selector: 'app-login',
@@ -14,6 +15,8 @@ import { ToastrService } from 'ngx-toastr';
 export class LoginComponent implements OnInit{
 
   faLock = faLock;
+  faEye = faEye;
+  showPassword = false;
   loginForm = new FormGroup({
     email: new FormControl(''),
     password: new FormControl('')
@@ -41,5 +44,11 @@ export class LoginComponent implements OnInit{
       );
     }
   }
+
+  togglePasswordVisibility() {
+    this.showPassword = !this.showPassword;
+  }
+
+ 
 
 }
