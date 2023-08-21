@@ -1,3 +1,38 @@
+<div class="gallery">
+    <div class="item item-1" (mouseenter)="showText(1)" (mouseleave)="hideText(1)">
+        <div class="text-overlay" *ngIf="showOverlay[1]">
+            Lorem ipsum, dolor sit amet consectetur adipisicing elit. Accusantium consequuntur aut distinctio quaerat
+            temporibus eaque ullam exercitationem facilis reprehenderit. Distinctio aperiam praesentium fugiat a
+            facilis, in optio similique sed maiores.
+        </div>
+    </div>
+    <div class="item item-2" (mouseenter)="showText(2)" (mouseleave)="hideText(2)">
+        <div class="text-overlay" *ngIf="showOverlay[2]">
+            Lorem, ipsum dolor sit amet consectetur adipisicing elit. Voluptatum labore explicabo illum facere incidunt
+            cumque aut harum dignissimos veniam ea! Cumque aliquam quam blanditiis rem ut at veniam magnam. Officia!
+        </div>
+    </div>
+    <div class="item item-3" (mouseenter)="showText(3)" (mouseleave)="hideText(3)">
+        <div class="text-overlay" *ngIf="showOverlay[3]">
+            Lorem, ipsum dolor sit amet consectetur adipisicing elit. Totam, mollitia explicabo? Veritatis, omnis
+            doloremque. Ipsam dicta aperiam dolor dolorem asperiores quia numquam aspernatur beatae omnis tempore, et
+            nobis culpa debitis.
+        </div>
+    </div>
+    <div class="item item-4" (mouseenter)="showText(4)" (mouseleave)="hideText(4)">
+        <div class="text-overlay" *ngIf="showOverlay[4]">
+            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Animi ipsum soluta qui alias beatae libero, quod
+            est molestias deserunt odit commodi laudantium? Minus, earum dolor? Blanditiis quaerat aperiam dolorum modi!
+        </div>
+    </div>
+    <div class="item item-5" (mouseenter)="showText(5)" (mouseleave)="hideText(5)">
+        <div class="text-overlay" *ngIf="showOverlay[5]">
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Cum, adipisci doloribus vel provident ratione at
+            hic, qui dolor, rerum recusandae sit. Ad, ipsum. Quod reiciendis nemo pariatur obcaecati omnis tenetur?
+        </div>
+    </div>
+</div>
+
 <div class="container pt-5 pb-5">
     <div class="col-12">
         <h1 class="text-center p-5">Admin Component! Welcome {{ name }}</h1>

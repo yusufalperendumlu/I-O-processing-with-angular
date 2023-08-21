@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, HostListener, OnInit } from '@angular/core';
 import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
@@ -9,6 +9,7 @@ import { AuthService } from 'src/app/services/auth.service';
 export class HeaderComponent implements OnInit{
 
   userName: string | null = null;
+  isNavbarShrunk: boolean = false;
   
     constructor(private auth: AuthService) { }
   
@@ -21,6 +22,11 @@ export class HeaderComponent implements OnInit{
         }
         
       }
+    }
+
+    @HostListener('window: scroll', [])
+    onScroll(): void {
+      this.isNavbarShrunk = window.scrollY > 100;
     }
 
     logout(): void {

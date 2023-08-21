@@ -12,6 +12,7 @@ declare var $: any;
 export class HomeComponent implements OnInit, AfterViewInit{
 
     name: string = "";
+    showOverlay: boolean[] = [false,false,false,false,false];
 
     constructor() {
      }
@@ -32,6 +33,14 @@ export class HomeComponent implements OnInit, AfterViewInit{
       obs2.subscribe((data) => console.log(data))
      })
 
+    }
+
+    showText(index: number) {
+      this.showOverlay[index] = true;
+    }
+
+    hideText(index: number) {
+      this.showOverlay[index] = false;
     }
 
 }

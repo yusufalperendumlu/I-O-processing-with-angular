@@ -1,0 +1,56 @@
+.gallery {
+    display: flex;
+    width: 100%;
+    height: 100vh;
+    overflow: hidden;
+  
+    .item {
+        flex: auto;
+        background-position: center;
+        background-size: cover;
+        position: relative;
+        transition: all 500ms ease-in-out;
+    
+        &:hover {
+            flex: 5;
+        }
+    
+        .text-overlay {
+            position: absolute;
+            top: 50%; 
+            left: 50%; 
+            transform: translate(-50%, -50%); 
+            max-width: 80%;
+            color: white;
+            font-size: 1.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            pointer-events: none;
+            transition: all 500ms ease-in;
+        }
+    
+        &:hover .text-overlay {
+            opacity: 1;
+            pointer-events: auto;
+            transition: all 500ms ease-in;
+        }
+    }
+  }
+  
+  .item-1 {
+    background-image: url('https://mdbootstrap.com/img/Photos/Horizontal/Nature/12-col/img%20(117).jpg');
+  }
+  .item-2 {
+    background-image: url('https://mdbootstrap.com/img/Photos/Horizontal/Nature/12-col/img%20(98).jpg');
+  }
+  .item-3 {
+    background-image: url('https://mdbootstrap.com/img/Photos/Horizontal/Nature/12-col/img%20(131).jpg');
+  }
+  .item-4 {
+    background-image: url('https://mdbootstrap.com/img/Photos/Horizontal/Nature/12-col/img%20(123).jpg');
+  }
+  .item-5 {
+    background-image: url('https://mdbootstrap.com/img/Photos/Horizontal/Nature/12-col/img%20(118).jpg');
+  }

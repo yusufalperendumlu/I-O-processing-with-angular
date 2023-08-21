@@ -1,0 +1,15 @@
+.navbar {
+    position: sticky;
+    top: 0;
+    z-index: 999;
+}
+
+.navbar.shrink {
+    height: 5vh;
+    transition: all 500ms ease-in-out;
+  }
+  
+  .navbar.shrink .navbar-brand {
+    transition: all 500ms ease-in-out; 
+    
+  }
